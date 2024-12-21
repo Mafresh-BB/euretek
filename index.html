@@ -14,9 +14,9 @@
         <div class="logo">
             <img src="./images/euretek- logo.png" width="120" height="50" alt="Euretek Logo">
         </div>
-        <button class="menu-toggle">☰</button>
+        <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
         <nav>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -26,6 +26,20 @@
         </nav>
 
     </header>
+    <div id="chatbot">
+        <div id="chatbot-header">
+            <h3>Chat with Euretek</h3>
+            <button id="chatbot-toggle">&times;</button>
+        </div>
+        <div id="chatbot-body">
+            <div id="chatbot-messages"></div>
+            <div id="chatbot-input">
+                <input type="text" id="user-message" placeholder="Type your message here..." />
+                <button id="send-message">&#9658;</button>
+            </div>
+        </div>
+    </div>
+
     <div id="loader">
         <div class="spinner"></div>
         <img src="./images/euretek- logo.png" alt="Euretek Logo" class="loader-logo">
@@ -65,20 +79,7 @@
             </div>
         </div>
     </section>
-    <div id="chatbot">
-        <div id="chatbot-header">
-            <h3>Chat with Euretek</h3>
-            <button id="chatbot-toggle">&times;</button>
-        </div>
-        <div id="chatbot-body">
-            <div id="chatbot-messages"></div>
-            <div id="chatbot-input">
-                <input type="text" id="user-message" placeholder="Type your message here..." />
-                <button id="send-message">&#9658;</button>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Chatbot Button -->
     <button id="chatbot-launcher">💬</button>
 
@@ -165,7 +166,50 @@
         <button id="next-btn">&#10095;</button>
     </section>
 
-
+    <section id="quiz" class="quiz-container">
+        <h2>What Tech Solution Fits Your Business?</h2>
+        
+        <!-- Progress Bar -->
+        <div id="quiz-progress" style="width: 100%; background: #f4f4f4; height: 10px; border-radius: 5px; margin-bottom: 20px;">
+            <div id="progress-bar" style="width: 0%; height: 100%; background: #00bcd4; border-radius: 5px;"></div>
+        </div>
+    
+        <!-- Questions -->
+        <div class="quiz-question">
+            <p>1. What is your primary business goal?</p>
+            <div class="quiz-options">
+                <button data-answer="web-development">Increase online presence</button>
+                <button data-answer="software">Automate operations</button>
+                <button data-answer="marketing">Boost sales and marketing</button>
+            </div>
+        </div>
+    
+        <div class="quiz-question hidden">
+            <p>2. What’s your biggest challenge?</p>
+            <div class="quiz-options">
+                <button data-answer="software">Streamlining workflows</button>
+                <button data-answer="marketing">Reaching more customers</button>
+                <button data-answer="web-development">Enhancing user experience</button>
+            </div>
+        </div>
+    
+        <div class="quiz-question hidden">
+            <p>3. Which tech trend excites you the most?</p>
+            <div class="quiz-options">
+                <button data-answer="web-development">Web design trends</button>
+                <button data-answer="software">AI and automation</button>
+                <button data-answer="marketing">Data-driven campaigns</button>
+            </div>
+        </div>
+    
+        <div id="quiz-result" class="hidden">
+            <h3>Your Ideal Solution: <span id="quiz-solution"></span></h3>
+            <p>Explore how Euretek can make this happen for your business!</p>
+            <img id="quiz-badge" src="" alt="Badge">
+            <button onclick="location.reload()">Retake Quiz</button>
+        </div>
+    </section>
+    
 
     <section id="contact" class="contact">
         <div class="content">

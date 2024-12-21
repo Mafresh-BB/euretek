@@ -3,11 +3,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('header nav ul');
+    const navLinks = document.querySelector('.nav-links');
 
-    // Toggle visibility of the navigation menu
     menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('visible');
+        navLinks.classList.toggle('show');
     });
 
 
@@ -398,4 +397,69 @@ document.addEventListener('mousemove', (e) => {
     // Move elements in opposite directions
     float1.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
     float2.style.transform = `translate(${x * -50}px, ${y * -50}px)`;
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const questions = document.querySelectorAll('.quiz-question');
+    const resultSection = document.getElementById('quiz-result');
+    const solutionSpan = document.getElementById('quiz-solution');
+    const badgeImage = document.getElementById('quiz-badge');
+    const progressBar = document.getElementById('progress-bar');
+    let currentQuestion = 0;
+    let answers = { webDevelopment: 0, software: 0, marketing: 0 };
+
+    // Handle option clicks
+    questions.forEach((question, index) => {
+        const options = question.querySelectorAll('.quiz-options button');
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const answer = option.dataset.answer;
+
+                // Increment score for selected answer
+                answers[answer] = (answers[answer] || 0) + 1;
+
+                // Update progress bar
+                const progress = ((index + 1) / questions.length) * 100;
+                progressBar.style.width = `${progress}%`;
+
+                // Move to the next question or show results
+                if (index < questions.length - 1) {
+                    questions[index].classList.add('hidden');
+                    questions[index + 1].classList.remove('hidden');
+                } else {
+                    showResults();
+                }
+            });
+        });
+    });
+
+    // Show results
+    function showResults() {
+        const maxAnswer = Object.keys(answers).reduce((a, b) => answers[a] > answers[b] ? a : b);
+        resultSection.classList.remove('hidden');
+        solutionSpan.textContent = maxAnswer === 'web-development' ? "Web Development" : maxAnswer === 'software' ? "Software Development" : "Marketing";
+        badgeImage.src = `images/${maxAnswer}-badge.png`;
+
+        // Confetti animation
+        generateConfetti();
+    }
+
+    // Confetti Animation
+    function generateConfetti() {
+        const body = document.body;
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.animationDelay = `${Math.random() * 2}s`;
+            confetti.style.backgroundColor = getRandomColor();
+            body.appendChild(confetti);
+
+            setTimeout(() => body.removeChild(confetti), 2000);
+        }
+    }
+
+    function getRandomColor() {
+        const colors = ['#00bcd4', '#ff5722', '#ffc107', '#8bc34a', '#673ab7'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
 });

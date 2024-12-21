@@ -49,22 +49,23 @@ button:hover ~ .custom-cursor {
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #1e1e1e;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #121212;
+    color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 header .logo img {
-    display: block;
+    height: 50px;
 }
 
-header nav ul {
-    list-style: none;
+nav ul {
     display: flex;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -169,6 +170,65 @@ header nav ul li a:hover {
     font-weight: bold;
     animation: blink 0.7s steps(2) infinite;
     color: #00bcd4;
+}
+.quiz-container {
+    text-align: center;
+    padding: 50px 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+}
+
+.quiz-options button {
+    background: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-options button:hover {
+    background: #007acc;
+}
+
+.hidden {
+    display: none;
+}
+
+#quiz-result {
+    background: #00bcd4;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#quiz-badge {
+    width: 100px;
+    margin: 20px auto;
+    display: block;
+}
+
+@keyframes confetti {
+    0% { transform: translateY(-100vh) rotate(0); }
+    100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #00bcd4;
+    animation: confetti 2s ease-out infinite;
 }
 
 /* Blinking cursor */
@@ -564,19 +624,19 @@ header nav ul li a:hover {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 20px;
         background-color: #121212;
-        border: 1px solid #333;
-        border-radius: 5px;
-        padding: 10px;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     nav ul li {
         margin: 10px 0;
     }
 
-    nav ul.visible {
+    nav ul.show {
         display: flex;
     }
 
