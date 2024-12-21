@@ -101,7 +101,7 @@ header nav ul li a:hover {
 /* Styling for Typing Animation */
 .hero {
     position: relative;
-    background: url('/images/hero-cityscape.jpeg') no-repeat center center/cover;
+    background: url('./images/hero-cityscape.jpeg') no-repeat center center/cover;
     background-attachment: fixed; /* Enables parallax effect */
     background-size: cover;
     height: 100vh;
@@ -601,6 +601,9 @@ header nav ul li a:hover {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
+    .contact {
+        flex-direction: column;
+    }
     .contact form {
         gap: 15px;
     }
