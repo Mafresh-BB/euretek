@@ -169,7 +169,7 @@ header nav ul li a:hover {
     font-size: 2rem;
     font-weight: bold;
     animation: blink 0.7s steps(2) infinite;
-    color: #00bcd4;
+    color: #8fb6bb;
 }
 .quiz-container {
     text-align: center;
@@ -551,7 +551,9 @@ header nav ul li a:hover {
     max-width: 500px;
     margin: 0 auto;
 }
-
+form label {
+    display: none;
+}
 .contact form input, 
 .contact form textarea {
     width: 100%;
